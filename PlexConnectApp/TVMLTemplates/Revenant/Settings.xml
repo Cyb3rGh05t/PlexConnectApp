@@ -34,8 +34,8 @@ See LICENSE.txt for this sample’s licensing information
             <lockup>
               <img src="{{RESOURCEURL(TVMLTemplates/Revenant/images:ServerIcon:png)}}" />
               <title style="text-align: center; tv-text-style:title2;">PlexConnect</title>
-              <subtitle style="text-align: center;"> </subtitle>
-              <subtitle style="text-align: center;">Revenant v0.2beta</subtitle>
+              <subtitle style="text-align: center;">Revenant Theme by CyberGhost </subtitle>
+              <subtitle style="text-align: center;">Version 0.1</subtitle>
             </lockup>
             </relatedContent>
         </listItemLockup>
@@ -54,8 +54,8 @@ See LICENSE.txt for this sample’s licensing information
             <lockup>
               <img src="{{RESOURCEURL(TVMLTemplates/Revenant/images:ServerIcon:png)}}" />
               <title style="text-align: center; tv-text-style:title2;">PlexConnect</title>
-              <subtitle style="text-align: center;"> </subtitle>
-              <subtitle style="text-align: center;">Revenant v0.2beta</subtitle>
+              <subtitle style="text-align: center;">Revenant Theme by CyberGhost </subtitle>
+              <subtitle style="text-align: center;">Version 0.1</subtitle>
             </lockup>
             </relatedContent>
         </listItemLockup>
@@ -71,8 +71,8 @@ See LICENSE.txt for this sample’s licensing information
             <lockup>
               <img src="{{RESOURCEURL(TVMLTemplates/Revenant/images:ServerIcon:png)}}" />
               <title style="text-align: center; tv-text-style:title2;">PlexConnect</title>
-              <subtitle style="text-align: center;"> </subtitle>
-              <subtitle style="text-align: center;">Revenant v0.2beta</subtitle>
+              <subtitle style="text-align: center;">Revenant Theme by CyberGhost </subtitle>
+              <subtitle style="text-align: center;">Version 0.1</subtitle>
             </lockup>
             </relatedContent>
         </listItemLockup>
@@ -92,8 +92,8 @@ See LICENSE.txt for this sample’s licensing information
             <lockup>
               <img src="{{RESOURCEURL(TVMLTemplates/Revenant/images:ServerIcon:png)}}" />
               <title style="text-align: center; tv-text-style:title2;">PlexConnect</title>
-              <subtitle style="text-align: center;"> </subtitle>
-              <subtitle style="text-align: center;">Revenant v0.2beta</subtitle>
+              <subtitle style="text-align: center;">Revenant Theme by CyberGhost </subtitle>
+              <subtitle style="text-align: center;">Version 0.1</subtitle>
             </lockup>
             </relatedContent>
         </listItemLockup>
@@ -114,8 +114,8 @@ See LICENSE.txt for this sample’s licensing information
             <lockup>
               <img src="{{RESOURCEURL(TVMLTemplates/Revenant/images:ServerIcon:png)}}" />
               <title style="text-align: center; tv-text-style:title2;">PlexConnect</title>
-              <subtitle style="text-align: center;"> </subtitle>
-              <subtitle style="text-align: center;">Revenant v0.2beta</subtitle>
+              <subtitle style="text-align: center;">Revenant Theme by CyberGhost </subtitle>
+              <subtitle style="text-align: center;">Version 0.1</subtitle>
             </lockup>
             </relatedContent>
         </listItemLockup>
@@ -129,8 +129,8 @@ See LICENSE.txt for this sample’s licensing information
             <lockup>
               <img src="{{RESOURCEURL(TVMLTemplates/Revenant/images:ServerIcon:png)}}" />
               <title style="text-align: center; tv-text-style:title2;">PlexConnect</title>
-              <subtitle style="text-align: center;"> </subtitle>
-              <subtitle style="text-align: center;">Revenant v0.2beta</subtitle>
+              <subtitle style="text-align: center;">Revenant Theme by CyberGhost </subtitle>
+              <subtitle style="text-align: center;">Version 0.1</subtitle>
             </lockup>
             </relatedContent>
         </listItemLockup>
@@ -144,8 +144,8 @@ See LICENSE.txt for this sample’s licensing information
             <lockup>
               <img src="{{RESOURCEURL(TVMLTemplates/Revenant/images:ServerIcon:png)}}" />
               <title style="text-align: center; tv-text-style:title2;">PlexConnect</title>
-              <subtitle style="text-align: center;"> </subtitle>
-              <subtitle style="text-align: center;">Revenant v0.2beta</subtitle>
+              <subtitle style="text-align: center;">Revenant Theme by CyberGhost </subtitle>
+              <subtitle style="text-align: center;">Version 0.1</subtitle>
             </lockup>
             </relatedContent>
         </listItemLockup>
@@ -159,8 +159,8 @@ See LICENSE.txt for this sample’s licensing information
           <lockup>
             <img src="{{RESOURCEURL(TVMLTemplates/Revenant/images:ServerIcon:png)}}" />
             <title style="text-align: center; tv-text-style:title2;">PlexConnect</title>
-            <subtitle style="text-align: center;"> </subtitle>
-            <subtitle style="text-align: center;">Revenant v0.2beta</subtitle>
+            <subtitle style="text-align: center;">Revenant Theme by CyberGhost </subtitle>
+            <subtitle style="text-align: center;">Version 0.1</subtitle>
           </lockup>
           </relatedContent>
       </listItemLockup>
@@ -174,8 +174,8 @@ See LICENSE.txt for this sample’s licensing information
         <lockup>
           <img src="{{RESOURCEURL(TVMLTemplates/Revenant/images:ServerIcon:png)}}" />
           <title style="text-align: center; tv-text-style:title2;">PlexConnect</title>
-          <subtitle style="text-align: center;"> </subtitle>
-          <subtitle style="text-align: center;">Revenant v0.2beta</subtitle>
+          <subtitle style="text-align: center;">Revenant Theme by CyberGhost </subtitle>
+          <subtitle style="text-align: center;">Version 0.1</subtitle>
         </lockup>
         </relatedContent>
     </listItemLockup>
@@ -189,8 +189,8 @@ See LICENSE.txt for this sample’s licensing information
       <lockup>
         <img src="{{RESOURCEURL(TVMLTemplates/Revenant/images:ServerIcon:png)}}" />
         <title style="text-align: center; tv-text-style:title2;">PlexConnect</title>
-        <subtitle style="text-align: center;"> </subtitle>
-        <subtitle style="text-align: center;">Revenant v0.2beta</subtitle>
+        <subtitle style="text-align: center;">Revenant Theme by CyberGhost </subtitle>
+        <subtitle style="text-align: center;">Version 0.1</subtitle>
       </lockup>
       </relatedContent>
   </listItemLockup>
@@ -204,8 +204,8 @@ See LICENSE.txt for this sample’s licensing information
               <lockup>
                 <img src="{{RESOURCEURL(TVMLTemplates/Revenant/images:ServerIcon:png)}}" />
                 <title style="text-align: center; tv-text-style:title2;">PlexConnect</title>
-                <subtitle style="text-align: center;"> </subtitle>
-                <subtitle style="text-align: center;">Revenant v0.2beta</subtitle>
+                <subtitle style="text-align: center;">Revenant Theme by CyberGhost </subtitle>
+                <subtitle style="text-align: center;">Version 0.1</subtitle>
               </lockup>
               </relatedContent>
         </listItemLockup>
@@ -219,8 +219,8 @@ See LICENSE.txt for this sample’s licensing information
               <lockup>
                 <img src="{{RESOURCEURL(TVMLTemplates/Revenant/images:ServerIcon:png)}}" />
                 <title style="text-align: center; tv-text-style:title2;">PlexConnect</title>
-                <subtitle style="text-align: center;"> </subtitle>
-                <subtitle style="text-align: center;">Revenant v0.2beta</subtitle>
+                <subtitle style="text-align: center;">Revenant Theme by CyberGhost </subtitle>
+                <subtitle style="text-align: center;">Version 0.1</subtitle>
               </lockup>
               </relatedContent>
         </listItemLockup>
@@ -241,8 +241,8 @@ See LICENSE.txt for this sample’s licensing information
             <lockup>
               <img src="{{RESOURCEURL(TVMLTemplates/Revenant/images:ServerIcon:png)}}" />
               <title style="text-align: center; tv-text-style:title2;">PlexConnect</title>
-              <subtitle style="text-align: center;"> </subtitle>
-              <subtitle style="text-align: center;">Revenant v0.2beta</subtitle>
+              <subtitle style="text-align: center;">Revenant Theme by CyberGhost </subtitle>
+              <subtitle style="text-align: center;">Version 0.1</subtitle>
             </lockup>
             </relatedContent>
         </listItemLockup>
@@ -256,8 +256,8 @@ See LICENSE.txt for this sample’s licensing information
             <lockup>
               <img src="{{RESOURCEURL(TVMLTemplates/Revenant/images:ServerIcon:png)}}" />
               <title style="text-align: center; tv-text-style:title2;">PlexConnect</title>
-              <subtitle style="text-align: center;"> </subtitle>
-              <subtitle style="text-align: center;">Revenant v0.2beta</subtitle>
+              <subtitle style="text-align: center;">Revenant Theme by CyberGhost </subtitle>
+              <subtitle style="text-align: center;">Version 0.1</subtitle>
             </lockup>
             </relatedContent>
         </listItemLockup>
@@ -271,8 +271,8 @@ See LICENSE.txt for this sample’s licensing information
             <lockup>
               <img src="{{RESOURCEURL(TVMLTemplates/Revenant/images:ServerIcon:png)}}" />
               <title style="text-align: center; tv-text-style:title2;">PlexConnect</title>
-              <subtitle style="text-align: center;"> </subtitle>
-              <subtitle style="text-align: center;">Revenant v0.2beta</subtitle>
+              <subtitle style="text-align: center;">Revenant Theme by CyberGhost </subtitle>
+              <subtitle style="text-align: center;">Version 0.1</subtitle>
             </lockup>
             </relatedContent>
         </listItemLockup>
