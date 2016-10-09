@@ -135,12 +135,12 @@
             }}
 
             {{XML(/library/recentlyAdded)}}{{
+            {{IFNODE(MediaContainer/Directory)}}{{
               <shelf style="margin:100 0 0 0;">
                   <header>
                       <title>Recently Added Television</title>
                   </header>
           		<section>
-              {{IFNODE(MediaContainer/Directory)}}{{
               {{COPY(MediaContainer/Directory)}}{{
                   {{IF({{CHK("{{VAL(type:)}}"=="season")}})}}{{
                   {{SET(noItems:false)}}
@@ -159,15 +159,12 @@
                     <subtitle><![CDATA[{{VAL(grandparentTitle)}}]]></subtitle>
                   </lockup>
                   }}
-                  {{IF({{CHK("{{VAL(type:)}}"!="season")}})}}{{
-                  <data/>
-                  }}
-                  }}
                   }}
               </section>
               </shelf>
+              }}
 
-
+              {{IFNODE(MediaContainer/Video)}}{{
             <shelf style="margin:50 0 0 0;">
                 <header>
                     <title>Recently Added Movies</title>
@@ -203,19 +200,20 @@
                     }}
                     }}
                 </section>
-
             </shelf>
+            }}
+            }}
 
             {{XML({{PATH(/hubs)}})}}{{
 	          {{IFNODE(MediaContainer/Hub)}}{{
-	          {{COPY(MediaContainer/Hub)}}{{
-          	{{IF({{CHK("{{VAL(hubIdentifier:)}}"=="home.music.recent")}})}}{{
         		<shelf style="margin:50 0 0 0;">
               <header>
                   <title>Recently Added Music</title>
               </header>
           		<section>
-			        {{COPY(Directory)}}{{
+                {{COPY(MediaContainer/Hub)}}{{
+              	{{IF({{CHK("{{VAL(hubIdentifier:)}}"=="home.music.recent")}})}}{{
+			          {{COPY(Directory)}}{{
 		          	<lockup
 		          		onSelect="Presenter.loadTitle('Music_Album', '{{PMSID()}}', '{{PATH({{VAL(key)}})}}', 'Music')"
 		           		onPlay="audioPlayer.play('{{PMSID()}}', '{{PATH({{VAL(key)}})}}', 'shuffle')"
@@ -225,13 +223,12 @@
 	        			<subtitle><![CDATA[{{VAL(parentTitle)}}]]></subtitle>
 	        		</lockup>
         			}}
+              }}
+              }}
 	        	</section>
 	       	</shelf>
-       		}}
-         	}}
         	}}
          }}
-      }}
 
             {{XML(/library/sections)}}{{
             <shelf style="margin:50 0 0 0;">
@@ -247,7 +244,7 @@
                 {{IF({{CHK("{{VAL(scanner:)}}"=="Plex Video Files Scanner")}})}}
                 {{
                 <lockup
-                  onSelect="Presenter.loadTitle('Homemovie_Directory', '{{PMSID()}}', '{{PATH(/library/sections/{{VAL(key)}}/folder)}}', 'Home Videos')"
+                  onSelect="Presenter.loadTitle('Homemovie_Directory', '{{PMSID()}}', '{{PATH(/library/sections/{{VAL(key)}}/folder)}}', '{{VAL(title)}}')"
                   onSelectHold="modal">
         {{XML({{PATH(/library/sections/{{VAL(key)}}/recentlyAdded)}})}}{{
                 <img aspectFill="true" src="{{IMAGEURL(MediaContainer/Video/art::600)}}" width="548" height="280" class="bannerImage"/>
@@ -260,7 +257,7 @@
                 {{IF(!{{CHK("{{VAL(scanner:)}}"=="Plex Video Files Scanner")}})}}
                 {{
                 <lockup
-                  onSelect="Presenter.loadTitle('Movie_OnDeck', '{{PMSID()}}', '{{PATH(/library/sections/{{VAL(key)}})}}', 'Movies')"
+                  onSelect="Presenter.loadTitle('Movie_OnDeck', '{{PMSID()}}', '{{PATH(/library/sections/{{VAL(key)}})}}', '{{VAL(title)}}')"
                   onSelectHold="modal">
         {{XML({{PATH(/library/sections/{{VAL(key)}}/recentlyAdded)}})}}{{
                 <img aspectFill="true" src="{{IMAGEURL(MediaContainer/Video/art::600)}}" width="548" height="280" class="bannerImage"/>
@@ -274,7 +271,7 @@
                 {{IF({{CHK("{{VAL(type:)}}"=="show")}})}}
                 {{
                 <lockup
-                  onSelect="Presenter.loadTitle('TVShow_OnDeck', '{{PMSID()}}', '{{PATH(/library/sections/{{VAL(key)}})}}', 'TV Shows')"
+                  onSelect="Presenter.loadTitle('TVShow_OnDeck', '{{PMSID()}}', '{{PATH(/library/sections/{{VAL(key)}})}}', '{{VAL(title)}}')"
                   onSelectHold="modal">
         {{XML({{PATH(/library/sections/{{VAL(key)}}/recentlyAdded)}})}}{{
         					<img aspectFill="true" src="{{IMAGEURL(MediaContainer/Video/art::600)}}" width="548" height="280" class="bannerImage"/>
@@ -287,7 +284,7 @@
                 {{IF({{CHK("{{VAL(type:)}}"=="artist")}})}}
                 {{
                 <lockup
-                  onSelect="Presenter.loadTitle('Music_OnDeck', '{{PMSID()}}', '{{PATH(/library/sections/{{VAL(key)}})}}', 'Music')"
+                  onSelect="Presenter.loadTitle('Music_OnDeck', '{{PMSID()}}', '{{PATH(/library/sections/{{VAL(key)}})}}', '{{VAL(title)}}')"
                   onSelectHold="modal">
         {{XML({{PATH(/library/sections/{{VAL(key)}}/recentlyAdded)}})}}{{
                 <img aspectFill="true" src="{{IMAGEURL(MediaContainer/Directory/art::600)}}" width="548" height="280" class="bannerImage"/>
@@ -300,7 +297,7 @@
                 {{IF({{CHK("{{VAL(type:)}}"=="photo")}})}}
                 {{
                 <lockup
-                  onSelect="Presenter.loadTitle('Photo_OnDeck', '{{PMSID()}}', '{{PATH(/library/sections/{{VAL(key)}})}}', 'Photos')"
+                  onSelect="Presenter.loadTitle('Photo_OnDeck', '{{PMSID()}}', '{{PATH(/library/sections/{{VAL(key)}})}}', '{{VAL(title)}}')"
                   onSelectHold="modal">
         {{XML({{PATH(/library/sections/{{VAL(key)}}/recentlyAdded)}})}}{{
                 <img aspectFill="true" src="{{IMAGEURL(MediaContainer/Photo/thumb::600)}}" width="548" height="280" class="bannerImage"/>
@@ -332,7 +329,7 @@
                     {{IF({{CHK("{{VAL(playlistType:)}}"=="video")}})}}
                     {{
                     <lockup
-                        onSelect="Presenter.loadTitle('Playlists_Video', '{{PMSID()}}', '{{PATH({{VAL(key)}})}}', 'Video PlayList')"
+                        onSelect="Presenter.loadTitle('Playlists_Video', '{{PMSID()}}', '{{PATH({{VAL(key)}})}}', '{{VAL(title)}}')"
                         onSelectHold="modal">
                         <img class="roundedImageCorners" src="{{IMAGEURL(composite::600)}}" height="300" width="300" />
                         {{IF({{CHK("{{VAL(leafCount)}}">"0")}})}}{{
@@ -348,7 +345,7 @@
                     {{IF({{CHK("{{VAL(playlistType:)}}"=="audio")}})}}
                     {{
                     <lockup
-                        onSelect="Presenter.loadTitle('Playlists_Audio', '{{PMSID()}}', '{{PATH({{VAL(key)}})}}', 'Audio PlayList')"
+                        onSelect="Presenter.loadTitle('Playlists_Audio', '{{PMSID()}}', '{{PATH({{VAL(key)}})}}', '{{VAL(title)}}')"
                         onSelectHold="modal">
                         <img class="roundedImageCorners" src="{{IMAGEURL(composite::600)}}" height="300" width="300" />
                         {{IF({{CHK("{{VAL(leafCount)}}">"0")}})}}{{
@@ -378,11 +375,11 @@
                     <title>Channels</title>
                 </header>
                 <section>
-                    {{COPY(MediaContainer/Directory)}}{{
+                {{COPY(MediaContainer/Directory)}}{{
                 {{SET(noItems:false)}}
                 {{IF({{TABLE(${{VAL(key)}}:0:/video/:1)}})}}{{
                 <lockup
-                  onSelect="Presenter.loadTitle('Movie_Directory', '{{PMSID()}}', '{{PATH({{VAL(key)}})}}', 'Channel')"
+                  onSelect="Presenter.loadTitle('Movie_Directory', '{{PMSID()}}', '{{PATH({{VAL(key)}})}}', '{{VAL(title)}}')"
                   onSelectHold="modal">
                   <img src="{{IMAGEURL(thumb::360)}}" height="250" width="250" />
                   <title><![CDATA[{{VAL(title)}}]]></title>
@@ -391,7 +388,7 @@
                 }}
                 {{IF({{TABLE(${{VAL(key)}}:0:/music/:1)}})}}{{
                 <lockup
-                  onSelect="Presenter.loadTitle('Music_Directory', '{{PMSID()}}', '{{PATH({{VAL(key)}})}}', 'Channel')"
+                  onSelect="Presenter.loadTitle('Music_Directory', '{{PMSID()}}', '{{PATH({{VAL(key)}})}}', '{{VAL(title)}}')"
                   onSelectHold="modal">
                   <img src="{{IMAGEURL(thumb::360)}}" height="250" width="250" />
                   <title><![CDATA[{{VAL(title)}}]]></title>
@@ -400,7 +397,7 @@
                 }}
                 {{IF({{TABLE(${{VAL(key)}}:0:/photos/:1)}})}}{{
                 <lockup
-                  onSelect="Presenter.loadTitle('Photo_Browser', '{{PMSID()}}', '{{PATH({{VAL(key)}})}}', 'Channel')"
+                  onSelect="Presenter.loadTitle('Photo_Browser', '{{PMSID()}}', '{{PATH({{VAL(key)}})}}', '{{VAL(title)}}')"
                   onSelectHold="modal">
                   <img src="{{IMAGEURL(thumb::360)}}" height="250" width="250" />
                   <title><![CDATA[{{VAL(title)}}]]></title>

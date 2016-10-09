@@ -108,11 +108,11 @@ See LICENSE.txt for this sample’s licensing information
                     <img src="{{IMAGEURL(thumb::768)}}" width="320" height="180" />
                     <overlay>
                       {{IF({{VAL(viewOffset)}})}}{{
-                      <badge src="{{RESOURCEURL(TVMLTemplates/Revenant/images/flags:watching2:png)}}"/>
+                      <img src="{{RESOURCEURL(TVMLTemplates/Revenant/images/flags:watching2:png)}}" width="320" height="180" />
                       }}
                       {{IF(!{{VAL(viewOffset)}})}}{{
                       {{IF(!{{VAL(viewCount)}})}}{{
-                      <badge src="{{RESOURCEURL(TVMLTemplates/Revenant/images/flags:unwatched:png)}}"/>
+                      <img src="{{RESOURCEURL(TVMLTemplates/Revenant/images/flags:unwatched:png)}}" width="320" height="180" />
                       }}
                       }}
                     </overlay>

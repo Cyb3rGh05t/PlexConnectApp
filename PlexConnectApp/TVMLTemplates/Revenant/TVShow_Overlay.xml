@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+ Copyright (C) 2015 Baa. All rights reserved.
+ See LICENSE.txt for this sample’s licensing information
+ -->
+{{XML()}}{{
+<document>
+    <head>
+        <style>
+            .shelf {
+<!--            tv-interim-spacing: 50;-->
+            margin: 30 0 0 0;
+            }
+
+
+            <!-- Music mini Card -->
+            .musicMiniCard {
+            width:1080;
+            height:270;
+            border-radius: 12;
+            background-color: rgba(0, 0, 0, 1);
+            }
+            .musicMiniImage {
+            width:480;
+            height:270;
+            tv-position:left;
+            border-radius: 12 0 0 12;
+            }
+            .musicMiniTitle {
+            text-align: left;
+            tv-text-max-lines: 2;
+            tv-position:top;
+            tv-align: left;
+            margin: 20 30 0;
+            tv-text-style:callout;
+            color: rgba(255, 255, 255, 0.6);
+            }
+            .musicMiniSubtitle {
+            text-align: left;
+            tv-text-max-lines: 1;
+            tv-position:top;
+            tv-align: left;
+            margin: 10 30 0;
+            tv-text-style:subhead;
+            color: rgba(255, 255, 255, 0.4);
+            }
+            .musicMiniDescription {
+            text-align: left;
+            tv-text-max-lines: 4;
+            tv-position:top;
+            tv-align: left;
+            margin: 6 30 0;
+            tv-text-style:caption1;
+            color: rgba(255, 255, 255, 0.4);
+        </style>
+    </head>
+    <stackTemplate theme="dark">
+        <background>
+            <img style="tv-img-treatment: blurOverlay; padding: 550 0 0 0;" />
+        </background>
+
+        <collectionList>
+
+            <!-- get next episode if TV Show-->
+            {{IF({{CHK("{{VAL(MediaContainer/Video/type:)}}"=="episode")}})}}{{
+
+            <!--Index der nächsten Folge speichern-->
+            {{SET(nextIndex:{{EVAL({{VAL(MediaContainer/Video/index)}}+1)}})}}
+            {{SET(nextKey:0)}}
+
+            {{XML({{VAL(MediaContainer/Video/parentKey)}}/children)}}{{
+                {{COPY(MediaContainer/Video)}}{{
+                    {{IF({{CHK("{{VAL(index)}}"=="{{GET(nextIndex)}}")}})}}{{
+                    <shelf style="margin:530 0 0 0;">
+                        <section>
+                            <card class="musicMiniCard" onselect="videoPlayer.stopPlaying(); videoPlayer.play('{{PMSID()}}', '{{PATH({{VAL(key)}})}}', {{IF(!{{VAL(viewOffset:0)}})}}{{'resume'}})">
+                                <img class="musicMiniImage" src="{{IMAGEURL(thumb::384)}}" />
+                                <subtitle class="musicMiniSubtitle">Continue Watching</subtitle>
+                                <title class="musicMiniTitle">{{VAL(index)}}. <![CDATA[{{VAL(title)}}]]></title>
+                                <description class="musicMiniDescription"><![CDATA[{{VAL(summary)}}]]></description>
+                            </card>
+                        </section>
+                    </shelf>
+
+
+                    }}
+                }}
+            }}
+
+
+
+            <!-- Aktuelle Wiedergabe in OnDeck ausblenden -->
+            {{SET(playingKey:{{VAL(MediaContainer/Video/key)}})}}
+
+            <!-- OnDeck for Episodes -->
+            {{IF({{CHK("{{VAL(MediaContainer/Video/type:)}}"=="episode")}})}}{{
+            <shelf style="margin:0 0 0 0;">
+                <section>
+                    <header>
+                        <title>{{TEXT(On Deck)}}</title>
+                    </header>
+                    {{XML(/library/onDeck)}}{{
+                        {{IFNODE(MediaContainer/Video)}}{{
+                        {{COPY(MediaContainer/Video)}}{{
+                            {{SET(noItems:false)}}  <!--within COPY this sets the var to false-->
+
+                            {{IF({{CHK("{{VAL(type:)}}"=="episode")}})}}{{
+                                {{IF(!{{CHK("{{VAL(key:)}}"=="{{GET(playingKey)}}")}})}}{{
+                                <lockup onselect="videoPlayer.stopPlaying(); Presenter.loadTitle('TVShow_Episode', '{{PMSID()}}', '{{PATH({{VAL(parentKey)}}/children)}}', 'Next Episode')">
+                                    <img src="{{IMAGEURL(thumb::768)}}" width="320" height="180" />
+                                    <title><![CDATA[{{VAL(index:)}}. {{VAL(title)}}]]></title>
+                                    <subtitle>{{TEXT(Season)}} {{VAL(parentIndex)}}</subtitle>
+                                    <subtitle><![CDATA[{{VAL(grandparentTitle)}}]]></subtitle>
+                                </lockup>
+                                }}
+                            }}
+                          }}
+                        }}
+                    }}
+                </section>
+            </shelf>
+            }}
+            }}
+
+
+            <!-- Recently Added for Movies -->
+            {{IF({{CHK("{{VAL(MediaContainer/Video/type:)}}"=="movie")}})}}{{
+                {{XML(/library/recentlyAdded)}}{{
+                    <shelf style="margin:530 0 0 0;">
+                        <header>
+                            <title>Recently Added Movies</title>
+                        </header>
+                        <section>
+                            {{COPY(MediaContainer/Video)}}{{
+                            {{SET(noItems:false)}}
+                            {{IF(!{{CHK("{{VAL(chapterSource:)}}"=="")}})}}{{
+                            <lockup onselect="videoPlayer.stopPlaying(); Presenter.loadTitle('Movie_PrePlay', '{{PMSID()}}', '{{PATH({{VAL(key)}})}}', 'Movie')">
+                                <img src="{{IMAGEURL(thumb::384)}}" width="150" height="226" />
+                                <title><![CDATA[{{VAL(title)}}]]></title>
+                                <subtitle><![CDATA[{{VAL(year)}}]]></subtitle>
+                            </lockup>
+                            }}
+                            }}
+                        </section>
+                    </shelf>
+                }}
+            }}
+        </collectionList>
+    </stackTemplate>
+</document>
+}}

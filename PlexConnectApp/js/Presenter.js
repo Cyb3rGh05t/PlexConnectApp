@@ -82,7 +82,7 @@ loadArt: function(view, pmsId, pmsPath, artwork, title) {
 
 
 },
-
+    
 loadTitle: function(view, pmsId, pmsPath, title) {
         var loadingDoc = createTitleSpinner(title);
     loadingDoc.addEventListener("load", function() {
@@ -91,8 +91,6 @@ loadTitle: function(view, pmsId, pmsPath, title) {
                                 });
     navigationDocument.pushDocument(loadingDoc);
     //navigationDocument.dismissModal();  // just in case?!  // todo: if (isModal)...?
-
-
 },
 
 

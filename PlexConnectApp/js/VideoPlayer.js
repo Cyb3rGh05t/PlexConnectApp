@@ -17,6 +17,9 @@ var partStartTime;  // ms - starting time of stacked media part
 var isTranscoding = false;
 var pingTimer = null;
 
+// Overlay
+var overlay = "";
+
 
 
 /*
@@ -135,22 +138,56 @@ play: function(pmsId, pmsPath) {
   for (var ix=0; ix<3 && ix<playlist.length; ix++) {
     videoPlayer.handleIndirectUrl(playlist.item(ix));  // todo: redirect ix=1,2 asyncronous? would save some video startup time.
   }
-  
+    
+    
   // create video player
   var player = new Player();
   player.playlist = playlist;
+    
+
   
   player.addEventListener("timeDidChange", videoPlayer.onTimeDidChange, {"interval":5});
   player.addEventListener("stateWillChange", videoPlayer.onStateWillChange);
   player.addEventListener("stateDidChange", videoPlayer.onStateDidChange);
   player.addEventListener("mediaItemDidChange", videoPlayer.onMediaItemDidChange);
-  
-  // start player
-  player.seekToTime(resumeTime/1000);
-  player.play();
-  
-  videoPlayer.player = player;
+ 
+    
+    // get Overlay XML
+    var overlayString = swiftInterface.getViewIdPath('TVShow_Overlay', pmsId, pmsPath);  // error handling?
+    var parser = new DOMParser();
+    overlay = parser.parseFromString(overlayString, "application/xml");
+    player.interactiveOverlayDismissable = true;
+
+    
+    // Modify Overlay
+   // const insertionPoint = overlay.getElementsByTagName('text').item(0);
+   // const overlayText = "Text in an overlay document";
+   // insertionPoint.textContent = overlayText;
+    
+   // Timed
+    var postPlayPoint = (duration/1000)-30;
+    player.addEventListener("timeBoundaryDidCross", function(event) {
+            console.log(" == TimeBoundaryDidCross: boundary: " + event.boundary + ", timestamp: " + event.timeStamp + " == ");
+            // Add Overlay
+            overlay.player = videoPlayer.player;
+            videoPlayer.player.interactiveOverlayDocument = overlay;
+
+    }, [postPlayPoint]);
+    
+    
+    
+    // start player
+    player.seekToTime(resumeTime/1000);
+    player.play();
+    videoPlayer.player = player;
+    
 },
+    
+stopPlaying: function() {
+    videoPlayer.player.stop();
+},
+    
+    
 
 handleIndirectUrl: function(mediaItem) {
   if (mediaItem && mediaItem.indirect=="1") {
@@ -212,11 +249,12 @@ onTimeDidChange: function(timeObj) {
 
 onStateWillChange: function(stateObj) {
   console.log("onStateWillChange: "+stateObj.oldState+" to "+stateObj.state);
- 
+
   // states: begin, scanning, loading, paused, playing, end
   newState = stateObj.state;
   
   if (newState == 'end') {  // approaching state "end"
+      
     // modify PrePlay Screen - resume button
     var doc = navigationDocument.documents[navigationDocument.documents.length-1];
     var elem = doc.getElementById("resume");
@@ -241,6 +279,7 @@ onStateWillChange: function(stateObj) {
         elem.outerHTML = newElem.outerHTML;
       }
     }
+      
   }
 },
 

@@ -41,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, TVApplicationControllerDe
         */
         
         let TVBaseURL = NSBundle.mainBundle().bundleURL.absoluteString
-        if let javaScriptURL = NSURL(string: TVBaseURL + "/js/App.js") {
+        if let javaScriptURL = NSURL(string: TVBaseURL! + "/js/App.js") {
             appControllerContext.javaScriptApplicationURL = javaScriptURL
         }
         

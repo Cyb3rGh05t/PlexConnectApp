@@ -43,13 +43,14 @@ class cSettings {
             ], 0
         ),
         "theme": ([
-            "Revenant", "Default", "Fanart", "Grids'n'Posters"
+            "Revenant", "Default"
             ], 0
         ),
         "themeExternalOverride": ([
             "off", "127.0.0.1:1844"
             ], 0
         ),
+
         "showChannels": ([
             "Hide", "Show"
             ], 0

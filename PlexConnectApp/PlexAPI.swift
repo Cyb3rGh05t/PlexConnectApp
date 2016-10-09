@@ -268,7 +268,7 @@ func getVideoPath(video: XMLIndexer, partIx: Int, pmsId: String, pmsPath: String
     // video format
     //    HTTP live stream
     // or native aTV media
-    var videoATVNative =
+    let videoATVNative =
         ["hls"].contains(getAttribute(media, key: "protocol", dflt: ""))
             ||
             ["mov", "mp4"].contains(getAttribute(media, key: "container", dflt: "")) &&
@@ -485,7 +485,7 @@ func getAudioPath(audio: XMLIndexer, partIx: Int, pmsId: String, pmsPath: String
     
     // todo: transcoder action setting?
     
-    var audioATVNative =
+    let audioATVNative =
         // todo: check Media.get('container') as well - mp3, m4a, ...?
         ["mp3", "aac", "ac3", "drms", "alac", "aiff", "wav"].contains(getAttribute(media, key: "audioCodec", dflt: ""))
     print("audioATVNative: " + String(audioATVNative))

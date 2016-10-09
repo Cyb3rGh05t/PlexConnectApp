@@ -9,6 +9,7 @@
 import Foundation
 
 
+//    var previousPar2=[""]
 
 class cXmlConverter {
     var pmsId: String? = ""
@@ -23,7 +24,9 @@ class cXmlConverter {
     var template: String = ""
     var xmlCache: [String: XMLIndexer] = [:]
     var variables: [String: String] = [:]
-
+    
+    //var previousPar: String? = previousPar2
+    
     init() {
         // jump-table to commands modifying the XML structure: COPY, CUT
         processStructure = [
@@ -69,6 +72,9 @@ class cXmlConverter {
             "TEXT": processTEXT!,
             "SETTING": processSETTING!,
             "CUSTOMSETTING": processCUSTOMSETTING!,
+            
+//            "FUTUREVAL": processFUTUREVAL!,
+//            "PREVIOUSVAL": processPREVIOUSVAL!,
         ]
     }
     
@@ -389,6 +395,35 @@ class cXmlConverter {
         return key
     }
     
+
+    
+//////
+/*    var processFUTUREVAL: ((_self: cXmlConverter,XML: XMLIndexer?, par: String) -> String)? = {
+        _self, XML, _par in
+        
+        var par = _par.componentsSeparatedByString(":")
+        let previousPar2 = par
+        NSLog ("\n\n\n\nPREVIOUS PAR 2\n\n%@",previousPar2)
+        let key = _self.getKey(XML, par: &par)
+        //let previousKey = _self.getKey(XML, par: &par)
+        return key
+    }
+
+    
+    var processPREVIOUSVAL: ((_self: cXmlConverter,XML: XMLIndexer?, par: String) -> String)? = {
+        _self, XML, _par in
+        
+//        var par=previousPar2
+//        let par = previousPar
+        let key = _self.getKey(XML, par: &previousPar2)
+//        return key
+        return key
+    }
+*/
+//////
+    
+    
+    
     var processTABLE: ((_self: cXmlConverter,XML: XMLIndexer?, par: String) -> String)? = {
         _self, XML, _par in
         
@@ -596,7 +631,7 @@ class cXmlConverter {
                     continue
                 }
             }
-            res++
+            res += 1
         }
         return String(res)
     }
